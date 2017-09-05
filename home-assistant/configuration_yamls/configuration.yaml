@@ -1,0 +1,71 @@
+homeassistant:
+  # Name of the location where Home Assistant is running
+  name: Home
+  # Location required to calculate the time the sun rises and sets
+  latitude: !secret home_latitude
+  longitude: !secret home_longitude
+  # Impacts weather/sunrise data (altitude above sea level in meters)
+  elevation: 84
+  # metric for Metric, imperial for Imperial
+  unit_system: metric
+  # Pick yours from here: http://en.wikipedia.org/wiki/List_of_tz_database_time_zones
+  time_zone: !secret home_zone
+  customize:
+    switch.hifi: 
+      icon: mdi:itunes
+    media_player.spotify:
+      hidden: false
+    switch.heater:
+      icon: mdi:fire
+  #  group.living_room_l:
+   #   hidden: true
+   # group.living_room_s:
+    #  hidden: true
+    #group.system_monitor:
+    #  hidden: true
+   # group.speedtest:
+   #   hidden: true
+  
+  customize_domain:
+    automation:
+      hidden: true
+
+#Enables history log
+history:
+
+# Enables the frontend
+frontend:
+
+# Enables configuration UI
+config:
+
+# Enable MQTT
+mqtt:
+
+# Enables ios app
+ios:
+
+# Enable log for everything
+logger:
+  default: warn
+
+http:
+ api_password: !secret http_password
+ base_url: !secret interface_link
+
+# Text to speech
+tts:
+  platform: google
+
+switch: !include switch.yaml
+light: !include lights.yaml
+group: !include groups.yaml
+binary_sensor: !include binary_sensors.yaml
+automation: !include automations.yaml
+media_player: !include media.yaml
+sensor: !include sensors.yaml
+shell_command: !include shell_commands.yaml
+rest_command: !include rest_commands.yaml
+input_slider: !include input_sliders.yaml
+script: !include scripts.yaml
+#weatherconfig: !include weatherconfig.yaml

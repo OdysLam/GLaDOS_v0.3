@@ -1,0 +1,5 @@
+- platform: ping
+  name: Mainframe Status
+  host: 192.168.1.72
+  scan_interval: 10
+  

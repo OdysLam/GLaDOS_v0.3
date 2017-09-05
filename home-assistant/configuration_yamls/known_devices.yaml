@@ -1,0 +1,8 @@
+my_iphone:
+  hide_if_away: false
+  icon: 
+  mac:
+  name: my iphone
+  picture: /local/odys.jpg
+  track: true
+  vendor:

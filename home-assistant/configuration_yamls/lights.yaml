@@ -1,0 +1,27 @@
+- platform: mqtt
+  name: "Corner Light"
+  command_topic: "home/systems/smart_strip"
+  retain: true
+  payload_on: '{"2":"1"}'
+  payload_off: '{"2":"0"}'
+
+- platform: mqtt
+  name: "White Led Strip"
+  command_topic: "home/systems/smart_strip"
+  retain: true
+  payload_on: '{"3":"1"}'
+  payload_off: '{"3":"0"}'
+
+- platform: mqtt
+  name: "Office Light"
+  command_topic: "office/office_light"
+  retain: true
+  payload_on: 1
+  payload_off: 0
+
+- platform: mqtt
+  name: "Workshop Light"
+  command_topic: "office/workshop_light"
+  retain: true
+  payload_on: 1
+  payload_off: 0

@@ -1,0 +1,32 @@
+- platform: spotify
+  client_id: ddaf9a9a89924cd39912a30e73cec628
+  client_secret: e5eaa5e41f5d490094564ec2590709f9
+ #cache_path: /home/homeassistant/.homeassistant/.spotify-token-cache 
+  
+- platform: universal
+  name: Hi-Fi 
+  #children:
+  # - media_player.spotify
+  commands:
+    turn_on:
+      service: switch.turn_on
+      data:
+        entity_id: switch.hifi_standby
+    turn_off:
+      service: switch.turn_off
+      data:
+        entity_id: switch.hifi_standby
+    volume_up:
+      service: shell_command.hifi_volume_up
+    volume_down:
+      service: shell_command.hifi_volume_down
+    volume_mute:
+      service: shell_command.hifi_mute
+  attributes:
+    state: switch.hifi_standby
+    volume_level: media_player.spotify | volume_level
+    source: media_player.spotify | source
+    source_list: media_player.spotify | source_list
+ 
+
+    

@@ -1,0 +1,76 @@
+living_room_l:
+  name: Living Room Lights
+  entities:
+    - light.corner_light
+    - light.white_led_strip
+living_room_s: 
+  name: Living Room Systems
+  control: hidden
+  entities:
+    - switch.mainframe_pc
+    - switch.hifi_power
+
+office_lights:
+  name: Lights
+  entities:
+   - light.office_light
+   - light.workshop_light
+
+doors:
+  name: Doors
+  entities:
+    - switch.door
+    - switch.buildings_entrance
+
+office:
+  view: yes
+  name: Office
+  entities:
+    - switch.office_power_strip
+    - group.office_lights
+
+default_view:
+  name: Living_Room
+  view: yes
+  icon: mdi:home 
+  entities:
+    - group.doors
+    - group.living_room_l
+    - group.heater
+    - sensor.iphone_de_odysseas_battery_level
+    - device_tracker.my_iphone
+    - media_player.hifi
+    - media_player.spotify
+
+systems:
+  view: yes
+  name: Systems
+  entities:
+    - group.system_monitor
+    - group.speedtest
+    - group.living_room_s
+    - binary_sensor.mainframe_status
+    - sensor.spotify_played_today
+
+system_monitor:
+  name: System Monitor
+  entities:
+    - sensor.cpu_use
+    - sensor.ram_use
+    - sensor.last_boot
+    - sensor.disk_use_
+
+speedtest:
+  name: Internet Connection
+  entities:
+    - sensor.speedtest_download
+    - sensor.speedtest_upload
+    - sensor.speedtest_ping
+
+heater:
+  name: Heater Timer
+  icon: mdi:fire
+  entities:
+    - switch.heater
+    - input_slider.heater_min
+    - sensor.heater_timer

@@ -1,0 +1,62 @@
+- platform: mqtt
+  name: "Hi-Fi Power"
+  command_topic: "home/systems/smart_strip"
+  retain: true
+  payload_on: '{"1":"1"}'
+  payload_off: '{"1":"0"}'
+
+- platform: mqtt
+  name: "pc_switch"
+  command_topic: "home/systems/smart_strip"
+  retain: true
+  payload_on: '{"5":"1"}'
+  payload_off: 0  # Don't care, as we actually use the template bellow
+
+- platform: mqtt
+  name: "Heater"
+  command_topic: "home/appliances/heater/"
+  retain: true
+  payload_on: 1
+  payload_off: 0
+
+- platform: mqtt
+  name: "Office Power Strip"
+  command_topic: "home/office/power_strip"
+  retain: true
+  payload_on: 1
+  payload_off: 0
+
+- platform: command_line
+  switches:
+    hifi_standby:
+      command_on: "cd"
+      command_off: "cd"
+      friendly_name: "Hi-Fi Standby"
+
+- platform: template
+  switches:
+    mainframe_pc:
+      friendly_name: Mainframe 
+      value_template: "{{ is_state('binary_sensor.mainframe_status', 'on') }}"
+      turn_on:
+        service: switch.turn_on
+        entity_id: switch.pc_switch
+      turn_off:
+        service: rest_command.pc_off
+
+
+- platform: mqtt
+  name: "Door"
+  command_topic: "home/systems/door"
+  state_topic: "home/systems/door/status"
+  payload_on: "1"
+  payload_off: "0"
+  state_on: "1"
+  state_off: "0"
+  optimistic: false 
+
+# Door switches
+
+- platform: rpi_gpio
+  ports:
+    11: Building's Entrance

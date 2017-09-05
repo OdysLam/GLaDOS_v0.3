@@ -1,0 +1,6 @@
+heater_min:
+  name: Minutes
+  initial: 30
+  min: 0
+  max: 60
+  step: 5

@@ -1,0 +1,27 @@
+- id: iphone_battery_check
+  alias: check iphone battery & location
+  trigger:
+    platform: time
+  # every 5 minutes
+    minutes: '/30'
+    seconds: 00
+  action:
+    - service: notify.ios_my_iphone
+      data:
+        message: "request_location_update"
+    - delay: 00:00:20
+    - service: notify.ios_my_iphone
+      data:
+        message: request_location_update
+
+- id: building_door
+  alias: automatic turn_off of building_door
+  trigger:
+    platform: state
+    entity_id: switch.buildings_entrance
+    from: 'off'
+    to: 'on'
+  action:
+    - delay: 00:00:30
+    - service: switch.turn_off
+      entity_id: switch.buildings_entrance

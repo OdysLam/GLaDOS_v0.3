@@ -1,0 +1,9 @@
+open_doors:
+  sequence:
+    - service: switch.turn_on
+      entity_id: switch.door
+    - service: switch.turn_on
+      entity_id: switch.buildings_entrance0
+      delay: 00:00:30
+    - service: switch.turn_off
+      entity_id: switch.buildings_entrance
